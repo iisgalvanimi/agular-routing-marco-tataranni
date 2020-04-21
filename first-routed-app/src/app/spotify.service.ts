@@ -21,10 +21,13 @@ export class SpotifyService {
   }
   getTrack(id: string) {
     const url = `https://api.spotify.com/v1/tracks/${id}`;
-    const headers = new HttpHeaders({
-      Authorization:
-        'Bearer BQD55xWV02TOvCc5bNM9zcMNCAVvQcqxuN2bfASObLL2GIpEwUUO9_fG8eSwtbuyvy-lVvQShs6wUhyDnb9BSaPh4Au07WhD3omwEuYmdG8EiQLCdfYIkkMwTM5JgmVz0hIRuXDCz-UimfUYwIQp5WWmk8TsuDA'
-    });
+    const headers = new HttpHeaders({Authorization: environment.oauthToken});
+
+    return this.http.get(url, { headers });
+  }
+  getArtist(id: string) {
+    const url = `https://api.spotify.com/v1/artists/${id}`;
+    const headers = new HttpHeaders({Authorization: environment.oauthToken});
 
     return this.http.get(url, { headers });
   }
